@@ -1,0 +1,396 @@
+.element {
+	
+	margin: 0 auto;
+	 /*Centreaza elemente folosind marginile*/
+
+	position: relative;
+	 /* Pozitioneaza un element IN RAPORT cu locatia sa default in html*/
+
+	position: absolute;
+	 /* Pozitioneaza un element fara a influenta pozitia altor elemente pe pagina (poate genera suprapuneri de elemente)*/
+
+	position: fixed; 
+	/* Elementul ramane fixat pe anumite coordonate a ecranului in pofida scrolling-ului*/
+
+	z-index: 3;
+	/* Creaza layering-ul pentru elemente. Z- de la axa Z - axa pentru volum.*/
+	/* IMPORTANT: Cu cat valoarea ka Index e mai mare cu atat acopera alte elemente.*/
+
+	display: inline;
+	/* Este modul default de reprezentare a ancorelor, bold, si italic.*/
+	/* De obicei display-ul inline elimina orice spatiu dinprejurul tag-urilor de mai sus.*/
+	/* IMPORTANT: Display-ul inline nu poate fi modificat cu width sau height.*/
+	/* Display-ul inline poate fi inteles ca si: "In aceeasi linie cu alte elemente".*/
+
+	display: block; 
+	/* Este display-ul DEFAULT pentru h1-h6, <p>, <div>, <footer>.*/
+	/* Elementele cu display bloc cuprind toata latimea paginii (dar aceasta poate fi modificata in CSS).*/
+	/* Se poate modifica Height.*/
+
+	display: inline-block;
+	/* Elementele cu asa display pot aparea unele linga altele si li se pot seta dimensiuni width si height.*/
+	/* De obicei se foloseste pentru a aseza elementele unul linga altul (si desubt)cu distanta necesara intre ele. 
+	De ex: bare de navigare orizontala*/
+
+	float: right;
+	float: left;
+	/* Paramentrul float misca orice element cat mai la DREAPTA sau STANGA posibil.*/
+	/* IMPORTANT: atunci cand se foloseste float-ul elementul trebuie sa aiba WIDTH (latime) neaparat*/
+
+	display: flex; 
+	/*Modul de display flex este ca si BLOCK. Alte elemente nu se vor suprapune/intersecta cu container-ul.*/
+
+	justify-content: flex-start;
+	/*Aseaza elementele in ordine fara spatii din partea stanga a container-ului. (FARA CENTRARE IN CONTAINER)*/
+	/*IMPORTANT: in general Justiy-content se foloseste doar cu Display FLEX;*/
+
+	justify-content: flex-end;
+	/*Aseaza elementele in container lipite de partea stanga cu ultimul element in partea extrema dreapta.*/
+
+	justify-content: center; 
+	/*aseaza elementele la centru PE AXA ORIZONTALA a containe-rului. (NU CENTREAZA PE AXA VERTICALA)*/
+
+	justify-content: space-around; 
+	/*Aseaza elementele central pe axa orizontala cu spatiu EGAL intre ele*/ 
+	/*IMPORTANT: Spatiul dintre elemente = 2 x Spatiul din margini*/
+
+	justify-content: space-between;
+	/*Aseaza elementele central pe axa orizontala cu spatiu EGAL intre ele. FARA SPATIU PE MARGINI*/
+
+	align-items: flex-start; 
+	/*Functia align items se foloseste pentru flex items pentru aranjare VERTICALA*/
+	/*FLEX-START aseaza elementele pe axa verticala in partea extrema de sus a flex-containerului*/
+
+	align-items: flex-end;
+	/*Aseaza elementele pe axa verticala in partea extrema de jos a flex-containerului*/
+
+	align-items: center; 
+	/*Aseaza elementele pe axa verticala in partea CENTRALA a flex-container-ului*/
+
+	align-items: baseline;
+	/*IMPORTANT: in cazul baseline, DOAR linia de jos a elementelor containerului se aliniaza indeferent de marimile altor elemente*/
+	/*Codul se poate citi ca: BASE - baza care de obicei e inferioara; LINE-linie. Linie de baza inferioara */
+
+	align-items: stretch;
+	/*Prin stretch: dimensiunea verticala a elementelor se va extinde de sus pina jos pana la marginile flex-container-ului*/
+	/*IMPORTANT: aceasta functie nu va lucra cu elementele care deja au o valoare specifica.*/
+	/*IMPORTANT: aceasta functie va lucra cu elementele care au o anumita [min-height] definita */
+
+
+	clear: left, right, both, none;
+	/* Parametrul CLEAR da instructiuni asupra cum se vor comporta elementele atunci cand se ating unul de altul.*/
+	/* LEFT, RIGHT - partea stanga sau dreapta a elementului nu va atinge celelalte elemente.*/
+	/* BOTH - nici o parte a elementului nu va atinge alte elemente.*/
+	/* NONE - elementul poate atinge orice parte din alte elemente. */
+
+	flex-grow: 1;
+	/*Ne indica daca anumite elemente trebuie sa CREASCA (sa se extinda in container) in cazul in care rezolutia ecranului se schimba */
+	/*Se extind elementele pe orizontala*/
+	flex-shrink: 2;
+	/*Este functia care indica elementelor cat de mult sa se stranga in cazul in care rezolutia ecranului se schimba*/
+	/*IMPORTANT: Toate elementele flex au proprietate - flex-shrink:1; - ca default. */
+	/*Ne folosirea acestei functii pur si simplu va ascunde content-ul atunci cand pagina este micsorata;*/
+
+	flex-basis: 30px;
+	/*Functia data indica width-ul (latimea) la un item flex prin pixeli in container*/
+	/*IMPORTANT: Afisarea depinde de marimea la flex-container;*/
+
+	flex-grow: 2;
+  	flex-shrink: 1;
+  	flex-basis: 150px;
+  	/*      = 	   */
+  	flex: 2 1 150px; 
+	/*Cele trei elemente flex in ordinea GROW, SHRINK si BASIS pot fi scrise intr-o linie cum a fost indicat*/
+	/*IMPORTANT: Proprietatile flex nu sunt neaparat echivalente cu modul-dsimplay FLEX*/
+	/*NOTA: arametrii dati dau instructiuni browserului ce se intimpla cu continutul atunci cand rezolutia ecranului se strange sau se extinde.*/
+	flex: 2 1; 
+	/*Sintaxa pentru flex-Grow si flex-Shrink*/
+	flex: 1 20px;
+	/*Sintaxa pentru flex-Grow si flex-Basis*/
+	/*IMPORTANT: Nu se poate declara flex-shrink si flex-basis in 2 valori; E nevoie de sintaxa separata;*/
+
+	flex-wrap: wrap; 
+	/*Functie de layout care va pozitiona pe o noua linie flex-item-urile care nu doresc sa fie "COMPRESATE" printr-o functie shrink*/
+	/*Ordinea de amplasare va fi aceeasi cum elementele au stat intr-o linie. IMPORTANT: Functia wrap nu implica neaparat centrarea*/
+	/* 1  2  3  4  5
+	________________
+	   1  2  3 
+	   4  5  
+	*/
+
+	flex-wrap: nowrap;
+	/*Functia data nu va permite wrapingul. IMPORTANT: Toate elementele flex au aceasta functie ca default si permit "shrink-ingul" */
+
+	flex-wrap: wrap-reverse;
+	/*Functia prin care in cazul shrink-ingului elementele de pe ultima linie trec pe prima linie si viceversa.
+	   1  2  3  4  5
+	________________
+	   5  4  3 
+	   2  1  
+	*/
+
+	justify-content: space-around; 
+	/*Functia data va centra in mod armonios elementele "Wrap-ate"*/
+
+	align-content: flex-start;
+	/*Functia data va pozitiona liniile de elemente la marginea de sus-stanga a container-ului, fara spatii intre elemente*/
+
+	align-content: flex-end;
+	/*Functia data va pozitiona liniile de elemente la margina de jos-stanga a containerilui, fara spatii intre elemente*/
+
+	align-content: center; 
+	/*Functia data va pozitiona liniile de elemente la centr-ul container-ului, fara spatii intre elemente*/
+
+	align-content: space-between;
+	/*Va pozitiona liniile de elemente in mod egal (in stanga def.) fara a lasa spatiu intre marginea de sus si de jos a container-ului*/
+
+	align-content: space-around;
+	/*Repartiseaza un spatiu echitabil de sus si jos pentru liniile de elemente. Def. se pozitioneaza pe partea stanga.*/
+
+	/*IMPORTANT - FLEX:
+	AXA ORIZONTALA e folosita pentru a pozitiona flex elementele cu proprietatile: 
+	- justify-content
+	- flex-wrap
+	- flex-grow
+	- flex-shrink
+	AXA VERTICALA e folosita pentru a pozitiona flex-elementele cu proprietatile: ;
+ 	- align-items
+	- align-content 
+
+	TOTUSI ACESTE PROPRIETATI IS POT SCHIMBA SENSUL PRIN:
+	*/
+
+	flex-direction: row; 
+	/*Proprietatea default care aranjeaza elementele din partea extrema left-top*/
+
+	flex-direction: row-reverse;
+	/*Proprietatea care va aranja elementele in (linie) in ordine inversa decat cea definita initial:
+	IMPORTANT: elementele se vor pozitiona in partea extrema din DREAPTA; 
+	ex: 5 4 3 2 1 */
+
+	flex-direction: column; 
+	/*proprietatea care va aranja elementele intr-o coloana lunga de sus in jos:
+	1
+	2
+	3
+	*/
+
+	flex-direction: column-reverse;
+	/*Proprietatea care va aranja elementele in coloana in ordine inversa:
+	3
+	2
+	1
+	*/
+
+	flex-direction: column;
+	flex-wrap: wrap; 
+	/*    <=>     */
+	flex-flow: column wrap;
+	/*Flex flow-ul este o sintaxa prescurata pentru a defini flex-direction si flex-wrap-ul intr-o linie*/
+	/*IMPORTANT: sintaxa flex-flow se declara doar in containere FLEX*/
+
+
+	font-weight: 300px; 
+	font-weight: normal;
+	/* Seteaza cat este de gros sau subtire textul*/
+
+	color: rgb(20, 30, 40);
+	/* Reprezentarea culorilor prin rgb. In ordinea pusa RED-GREEN-BLUE. FIecare numar indica volumul de culoare.*/
+
+	color: aqua;
+	/* Exista 147 de "Safe colors" in CSS*/
+	/* In cazul daca dorim o culoare in format hex cautam hex collors*/
+
+	color: hsl(350, 60%, 30%);
+	/* Sistemul de definire a culorilor HSL are parametrii
+	1. Hue (350 grade) Unghiul de definire a culorii din paleta circulara a culorilor;
+	2. Saturation (60%) Saturatia - sau bogatia in sine a culorii. 
+	3. Lightining (30%) Lumina - cat de inchisa sau deschisa e culoarea, foarte bun pentru ajustari;  
+	*/
+
+	color: hsla(34, 100%, 50%, 0.1);
+	/*Doar adauga alpha value - OPACITATE - culori transparente. Alpha poate avea valoare de la 0 la 1. 1 fiind fara opacitate*/
+	/*Alpha mai paote fi folosit si cu RGB- adica rgba(, , ,)*/
+
+	color: transparent; <=> color: rgb(0, 0, 0, 0); 
+	/*Un alt mod de a defini opacitatea */
+
+	font-family: "Courier New"; 
+	/*Important: Cand un font e compus din doua cuvinte separate, declararea font-ului se face in ghilimele. (" ")*/
+
+	font-weight: 100-900;
+	/*Definirea numerica a font-weight. Note importante:
+	1. 400 is the default font-weight of most text.
+	2. 700 signifies a bold font-weight.
+	3. 300 signifies a light font-weight. 
+
+	*NU TOATE FONT-URILE POT AVEA FONT WEIGHT - DOUBBLE CHECK*
+	*/
+
+	font-style: italic;
+	/*Stilul font-ului mai poate fi modificat prin functia Font-style*/
+
+	word-spacing: 0.3em; 
+	/*Spatiul intre CUVINTE; Default: 0.25em*/
+	/*De mentionat e ca valoarea default ramane neschimbata. In cazul la 0.3 em ea se adauga la default - 0.25 + 0.3 = 0.55em*/
+	/*Word-spacing-ul mai poate fi definit si cu: normal(default value)*/
+	/*Spacing-ul se recomanda la titluri BOLD pentru lizibilitate mai buna*/
+
+	letter-spacing: 0.02em; 
+	/*Spatiul intre LITERE*/
+
+	text-align: right; 
+	/*alinierea textului. Poate avea valorile: right, center, left*/
+
+	line-height: 1.4; 
+	/* Inaltimea liniei sau  distanta verticala dintre randuri. In modul curent de reprezentare reprezinta rata fata de marimea font-ului.*/
+
+	font-family: "Garamond", "Times", serif;
+	/*Este sintaxa pentru FALL-BACK fonts (font-uri de rezerva). Codul se traduce astfel: 
+	"Fontul primar este Garamond. 
+	Daca pe calculator nu este instalat, foloseste Times, 
+	daca nici Times nu este, foloseste orice font serif pre-instalat."
+	*/
+
+	list-style: square; 
+	/*Schimba Bullet-point-urile in listele neordonate*/
+
+	/*Centrarea */
+
+	left-margin: auto; 
+	right-margin: auto;
+	/*Este cea mai simpla metoda de CENTRARE*/
+	/*IMPORTANT: acest mod de centrare are nevoie de WIDTH (latime)*/
+
+	font-size: 1,2em;
+	/*Se foloseste em pentru a crea "responsive design". Un EM e echivalent cu marimea default a font-ului elementului;.*/
+
+	font-size: 1.5rem; 
+	/*Se foloseste REM pentru responsive design. Un REM se raporteaza la valoarea default a html-ului. Aceasta valoare poate fi ajustata manual de catre utilizator. Ca default este 16px. */
+
+html { 
+  font-size: 16px; 
+}
+	/*Seteaza valoarea default a font-size-ului in tot html-ul*/
+	
+}
+
+.breadcrumb > li {
+	display: inline;
+} 
+.breadcrumb li+li::before {
+	padding: 10px;
+  content: ">"; 
+
+}
+/*Cele doua selectoare seteaza bara de navigare;*/
+
+
+.GRID-System { 
+
+	/*Sistemul GRID de layout are trei elemente esentiale: 
+	1. Column - numarul de coloane in layout; 
+	2. Margin - marginile din stinga si dreapta layout-ului; 
+	3. Gutter - este spatiul sau "white-space" intre coloane; */
+
+	/*Inainte de stilizare avem nevoie de un GRID-CONTAINER si GRID-Items in Html:
+	
+  	<div class="grid">
+    	<div class="box a">A</div>
+    	<div class="box b">B</div>
+    	<div class="box c">C</div>
+    <div class="grid"> 
+    
+	*/
+
+	display: grid;
+	/*Pentru a defini sistemul grid Definim display-ul grid pentru container-ul principal*/
+	/*Ca default, sistemul grid contine doar o coloana dar elementele se pozitioneaza fiecare in proprie linie orizontala*/
+
+	width: 100%;
+	/*GRID-ul ca default i-a latimea de 100% din browser daca width-ul nu este definit*/
+
+	grid-template-columns: 100px 200px 10%; 
+	/*comanda data creeaza trei coloane de 100px, de 200px si de 10%-din width*/
+	/*Marimea coloanelor poate fi definita si in procente. Procentele se vor calcula din latimea grid-ului;*/
+	/*IMPORTANT: in cazul in care width-ul e definit in procentaj, un element la fel definit in procentaj va deveni flexibil in dependenta rezolutiei ecranului*/
+
+	grid-template-rows: 100px 200px 10%; 
+	/*DEFAULT: de obicei rows-urile acopera toata suprafata grid-ului.*/
+	/*Row-urile in procentaj i-au valoarea Inaltimii (Height)*/
+
+	grid-template: 200px 300px / 20% 10% 70%;
+	/*Este o sintaxa prescurtata pentru columns si rows. In cazul dat avem un grid cu 2 randuri si 3 coloane*/
+	/*ROWS: 200px 300px*/
+	/*COLUMNS: 20% 10% 70%*/
+
+	grid-template-rows: 1fr / 1fr 2fr 1fr; 
+	/*Sistemul grid introduce o noua unitate de masura 1fr (fractiune).*/
+	/*Masura data se calculeaza proportional cu width si height corepunzatoare*/
+	/*IMPORTANT: numarul total al fractiunilor imparte coloanele sau randurile in fractiuni. De ex, coloanele sunt impartite in total in 4 fractiuni*/
+	/*Fractiunile sunt folositoare fiindca nu admit overflow-ul*/
+	/*Se pot folosi fractiuni si px concomitent.*/ 
+	/*Important: FR - i-a spatiu din spatiul DISPONIBIL(cel ramas dupa elementele px sau cele in procentaj)*/
+	
+	grid-template-columns: repeat(3, 100px);
+	= 
+	grid-template-columns: 100px 100px 100px; 
+	 /*repeat - este o functie repeat();*/
+	 /*In cazul dat prin functia repeat se creaza 3 coloane a cate 100px*/
+	 /*Expresia repeat de sus este echivalenta cu sintaxa simpla*/
+	 /*functia repeat este folositoare cu fr. Astfel se poate crea un numar de coloane care ramane flexibil fara over-flow, indiferent de rezolutia ecranului*/
+
+	grid-template-columns: 100px minmax(100px 400px);
+	/*Functia min-max ne ajuta sa vem o dimensiune flexibila asupra unei coloane sau asupra unui rand*/
+	/*in cazul dat primul element va avea mereu 100px indiferent de marimea grid-ului*/
+	/*al doilea element va avea o valoare intre 100px si 400px in dependenta de layout-ul grid-ului si rezolutia display-ului*/
+	/*Functia min-max este folositoare cu width sau hight flexibil*/
+
+	grid-column-gap: 10px;  grid-row-gap: 10px;
+	grid-gap: 20px 10px; 
+	grid-gap: 10px;
+	/*Gap - adauga spatiu intre elementele grid-ului*/
+	/*De mentionat ca gap-urile adauga spatiu doar intre elemente nu si la marginile orizontale sau verticale ale grid-ului*/
+	/*A doua sintaxa este prescurtarea pentru row-gap si column-gap. In cazul dat 20px - row-gap, 10px - column gap*/
+	/*In cazul in care avem o singura valoare (10px) ca in al treilea exemplu row-gap si column-gap vor avea 10px*/
+
+	grid-row-start: 4;
+ 	grid-row-end: 6;
+ 	grid-row: 4 / 6;
+ 	/*Se aplica doar asupra grid-item. Indica cat spatiu va ocupa un element*/
+ 	/*Important: Numerotarea incepe exact cu pozitia elementului si se termina cu sfarsitul -1 element*/
+ 	/*a treia sintaxa este prescurtarea a start si end*/
+
+ 	grid-column: 2 / span 3;
+ 	/*coloanele tot au aceeasi logica ca si row-urile*/ 
+ 	/*Sintaxa span se foloseste pentru a indica numarul de coloane pe care il va ocupa elementul*/
+ 	/*Cu alte cuvinte sintaxa spune "Plaseaza elementul incepand cu coloana 2 si ocupa in total 3 coloane*/
+
+ 	grid-area: 2 / 3 / 4 / span 5;
+ 	/*Grid-Area este o super-prescurtare pentru: 
+		grid-row-start
+		grid-column-start
+		grid-row-end
+		grid-column-end
+
+
+ 	*/
+ 	transition-property: background-color; 
+  	transition-duration: 2s;
+  	 /*Transition property se foloseste in asociatie cu Hover;*/
+  	 /*In cazul dat va face o tranzitie smooth atunci cand facem roll-over pe buton*/
+
+  	transition-delay: 0ms;
+  	/*Deelay-ul - specifica timpul de asteptare pina va incepe tranzitia*/
+
+  	transition-property: color;
+	transition-duration: 1.5s;
+	transition-timing-function: linear;
+	transition-delay: 0.5s;
+	<=>
+	transition: color 1.5s linear 0.5s;
+	/*Prescurtarea sintaxei*/
+
+ }
+
+}
